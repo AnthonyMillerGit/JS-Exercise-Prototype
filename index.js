@@ -42,7 +42,7 @@ function Person(name, age) {
   this.name = name;
   this.age = age;
   this.stomach = [];
-  this.toString();
+  this.toString = function ()
   {
     return `${this.name}, ${this.age}`;
   }
@@ -92,8 +92,15 @@ Car.prototype.fill = function (gallons){
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
-function Baby() {}
-
+function Baby(name, age, toy) {
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = toy;
+}
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}, ${this.favoriteToy} being the favorite toy.`
+}
 /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
